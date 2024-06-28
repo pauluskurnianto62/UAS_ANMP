@@ -7,10 +7,8 @@ import androidx.room.Entity
 data class User(
     @ColumnInfo(name="username")
     var username:String,
-    @ColumnInfo(name="firstname")
-    var firstname:String,
-    @ColumnInfo(name="lastname")
-    var lastname:String,
+    @ColumnInfo(name="email")
+    var email:String,
     @ColumnInfo(name="password")
     var password:String,
 )

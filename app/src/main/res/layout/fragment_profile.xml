@@ -7,6 +7,15 @@
         <variable
             name="user"
             type="com.paulus.project_uas_anmp.model.User" />
+        <variable
+            name="logout_listener"
+            type="com.paulus.project_uas_anmp.view.LogoutClick" />
+        <variable
+            name="update_listener"
+            type="com.paulus.project_uas_anmp.view.ProfileChangeClick" />
+        <variable
+            name="backtomain_listener"
+            type="com.paulus.project_uas_anmp.model.User" />
     </data>
 
     <FrameLayout
@@ -17,6 +26,23 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/txtInfoUsername"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="Username"
+                android:inputType="text"
+                android:text="@={user.username}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
@@ -29,7 +55,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="152dp"
+                android:layout_marginTop="76dp"
                 android:fontFamily="sans-serif-black"
                 android:text="Profile"
                 android:textSize="34sp"
@@ -38,50 +64,37 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/txtEditFirstName"
+                android:id="@+id/txtInfoEmail"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="48dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
-                android:hint="First Name"
-                android:text="@={user.firstname}"
+                android:enabled="false"
+                android:hint="Email"
                 android:inputType="text"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-            <EditText
-                android:id="@+id/txtEditLastName"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="48dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:hint="Last Name"
-                android:text="@={user.lastname}"
-                android:inputType="text"
+                android:text="@={user.email}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtInfoUsername" />
 
             <EditText
                 android:id="@+id/txtEditPassword"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="64dp"
                 android:layout_marginEnd="32dp"
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
+                android:text="@={user.password}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtEditFirstName" />
+                app:layout_constraintTop_toBottomOf="@+id/txtInfoEmail" />
 
             <EditText
                 android:id="@+id/txtEditRetypePassword"
@@ -122,12 +135,41 @@
                 android:id="@+id/btnLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="32dp"
                 android:text="Logout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnUpdate" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="4dp"
+                android:text="Your E-mail:"
+                app:layout_constraintBottom_toTopOf="@+id/txtInfoEmail"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="4dp"
+                android:text="Change Password"
+                app:layout_constraintBottom_toTopOf="@+id/txtEditPassword"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="4dp"
+                android:text="Your Username:"
+                app:layout_constraintBottom_toTopOf="@+id/txtInfoUsername"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>

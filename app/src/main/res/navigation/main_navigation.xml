@@ -11,45 +11,51 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_registFragment"
+            android:id="@+id/actionLoginRegistFragment"
             app:destination="@id/registFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_newsListFragment"
+            android:id="@+id/actionLoginNewsListFragment"
             app:destination="@id/newsListFragment" />
     </fragment>
     <fragment
         android:id="@+id/registFragment"
         android:name="com.paulus.project_uas_anmp.view.RegistFragment"
         android:label="fragment_regist"
-        tools:layout="@layout/fragment_regist" >
-        <action
-            android:id="@+id/action_registFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_regist" />
     <fragment
         android:id="@+id/newsListFragment"
         android:name="com.paulus.project_uas_anmp.view.NewsListFragment"
         android:label="fragment_news_list"
         tools:layout="@layout/fragment_news_list" >
         <action
-            android:id="@+id/action_newsListFragment_to_newsDetailFragment"
+            android:id="@+id/actionNewsListNewsDetailFragment"
             app:destination="@id/newsDetailFragment" />
         <action
-            android:id="@+id/action_newsListFragment_to_profileFragment"
+            android:id="@+id/actionNewsListProfileFragment"
             app:destination="@id/profileFragment" />
+        <argument
+            android:name="username"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/newsDetailFragment"
         android:name="com.paulus.project_uas_anmp.view.NewsDetailFragment"
         android:label="fragment_news_detail"
-        tools:layout="@layout/fragment_news_detail" />
+        tools:layout="@layout/fragment_news_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.paulus.project_uas_anmp.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_loginFragment"
+            android:id="@+id/actionLogout"
             app:destination="@id/loginFragment" />
+        <argument
+            android:name="username"
+            app:argType="string" />
     </fragment>
 </navigation>

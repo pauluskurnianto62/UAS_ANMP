@@ -6,7 +6,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.paulus.project_uas_anmp.model.NewsDatabase
 import com.paulus.project_uas_anmp.model.UserDatabase
 
-val MIGRATION_1_2 = object : Migration(2, 3) {
+val MIGRATION_1_2 = object : Migration(1, 2) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL(
             "")

@@ -13,7 +13,9 @@ data class News(
     @ColumnInfo(name="short_desc")
     var short_desc:String,
     @ColumnInfo(name="image")
-    var image:String
+    var image:String,
+    @ColumnInfo(name="article")
+    var article:String
 ) {
     @PrimaryKey(autoGenerate = true)
     var uuid:Int =0
