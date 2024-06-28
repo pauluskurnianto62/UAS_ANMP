@@ -14,7 +14,7 @@ import com.paulus.project_uas_anmp.databinding.FragmentNewsListBinding
 import com.paulus.project_uas_anmp.model.User
 import com.paulus.project_uas_anmp.viewmodel.NewsListViewModel
 
-class NewsListFragment : Fragment() {
+class NewsListFragment : Fragment(), ProfileClick, CreateNewsClick {
     private lateinit var binding: FragmentNewsListBinding
     private lateinit var viewModel: NewsListViewModel
     private val newsListAdapter = NewsListAdapter(arrayListOf())
@@ -33,11 +33,6 @@ class NewsListFragment : Fragment() {
         viewModel.refresh()
         binding.recView.layoutManager = LinearLayoutManager(context)
         binding.recView.adapter = newsListAdapter
-
-        binding.fobProfile.setOnClickListener {
-            val action = NewsListFragmentDirections.actionNewsListProfileFragment("x")
-            Navigation.findNavController(it).navigate(action)
-        }
 
         observeViewModel()
     }
@@ -68,5 +63,15 @@ class NewsListFragment : Fragment() {
                 binding.txtError?.visibility = View.VISIBLE
             }
         })
+    }
+
+    override fun onProfileClick(v: View) {
+        val action = NewsListFragmentDirections.actionNewsListProfileFragment(v.tag.toString())
+        Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun onCreateNewsClick(v: View) {
+        val action = NewsListFragmentDirections.actionNewsListProfileFragment(v.tag.toString())
+        Navigation.findNavController(v).navigate(action)
     }
 }
