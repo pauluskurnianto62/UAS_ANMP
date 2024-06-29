@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.paulus.project_uas_anmp.databinding.NewsListItemBinding
 import com.paulus.project_uas_anmp.model.News
 
-class NewsListAdapter(val newsList:ArrayList<News>): RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>(), NewsDetailClick, DeleteNewsClick {
+class NewsListAdapter(val newsList:ArrayList<News>, val adapterOnClick : (News) -> Unit): RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>(), NewsDetailClick {
     class NewsViewHolder(var binding:NewsListItemBinding ): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -23,6 +23,9 @@ class NewsListAdapter(val newsList:ArrayList<News>): RecyclerView.Adapter<NewsLi
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.binding.news =newsList[position]
         holder.binding.readListener = this
+        holder.binding.btnDelete.setOnClickListener {
+                adapterOnClick(newsList[position])
+        }
     }
 
     fun updateNewsList(newNewsList: List<News>) {
@@ -34,9 +37,5 @@ class NewsListAdapter(val newsList:ArrayList<News>): RecyclerView.Adapter<NewsLi
     override fun onNewsDetailClick(v: View) {
         val action = NewsListFragmentDirections.actionNewsListNewsDetailFragment(v.tag.toString().toInt())
         Navigation.findNavController(v).navigate(action)
-    }
-
-    override fun onDeleteNewsClick(v: View) {
-
     }
 }

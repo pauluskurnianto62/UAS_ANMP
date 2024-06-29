@@ -17,7 +17,7 @@ import com.paulus.project_uas_anmp.viewmodel.NewsListViewModel
 class NewsListFragment : Fragment(), ProfileClick, CreateNewsClick {
     private lateinit var binding: FragmentNewsListBinding
     private lateinit var viewModel: NewsListViewModel
-    private val newsListAdapter = NewsListAdapter(arrayListOf())
+    private val newsListAdapter = NewsListAdapter(arrayListOf(), { item -> viewModel.clearNews(item) })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +33,8 @@ class NewsListFragment : Fragment(), ProfileClick, CreateNewsClick {
         viewModel.refresh()
         binding.recView.layoutManager = LinearLayoutManager(context)
         binding.recView.adapter = newsListAdapter
+        binding.createnewsListener = this
+        binding.profileListener = this
 
         observeViewModel()
     }

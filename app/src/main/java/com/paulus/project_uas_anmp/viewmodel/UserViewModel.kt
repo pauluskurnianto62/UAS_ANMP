@@ -25,10 +25,10 @@ class UserViewModel(application: Application)
         }
     }
 
-    fun fetch(username:String, password:String) {
+    fun login(username:String, password:String) {
         launch {
             val db = buildUserDb(getApplication())
-            userLD.postValue(db.userDao().selectUser(username, password))
+            db.userDao().selectUser(username, password)
         }
     }
 

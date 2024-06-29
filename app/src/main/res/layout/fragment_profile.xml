@@ -15,7 +15,7 @@
             type="com.paulus.project_uas_anmp.view.ProfileChangeClick" />
         <variable
             name="backtomain_listener"
-            type="com.paulus.project_uas_anmp.model.User" />
+            type="com.paulus.project_uas_anmp.view.BackMainClick" />
     </data>
 
     <FrameLayout
@@ -118,6 +118,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="48dp"
                 android:text="Back"
+                android:onClick="@{backtomain_listener::onBackMainClick}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtEditRetypePassword" />
 
@@ -128,6 +129,7 @@
                 android:layout_marginTop="48dp"
                 android:layout_marginEnd="16dp"
                 android:text="Update"
+                android:onClick="@{(view) -> update_listener.onProfileChangeClick(view,user)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtEditRetypePassword" />
 
@@ -137,6 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Logout"
+                android:onClick="@{logout_listener::onLogoutClick}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnUpdate" />

@@ -16,7 +16,7 @@ interface BackMainClick {
 }
 
 interface LoginClick {
-    fun onLoginClick(v: View)
+    fun onLoginClick(v: View, obj: User)
 }
 
 interface LogoutClick {
@@ -27,12 +27,16 @@ interface ProfileClick {
     fun onProfileClick(v: View)
 }
 
+interface RegistClick {
+    fun onRegistClick(v: View)
+}
+
 interface ProfileChangeClick {
     fun onProfileChangeClick(v: View, obj: User)
 }
 
 interface CreateAccountClick {
-    fun onProfileChangeClick(v: View, obj: User)
+    fun onCreateAccountClick(v: View, obj: User)
 }
 
 interface CreateNewsClick {
@@ -45,5 +49,9 @@ interface DeleteNewsClick {
 
 interface BackNewsListClick {
     fun onBackNewsListClick(v: View)
+}
+
+interface CreatedNewsClick {
+    fun onCreatedNewsClick(v: View)
 }
 

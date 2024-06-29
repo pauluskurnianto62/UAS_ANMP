@@ -51,7 +51,7 @@ class ProfileFragment : Fragment(), ProfileChangeClick, LogoutClick, BackMainCli
     }
 
     override fun onProfileChangeClick(v: View, obj: User) {
-        if (binding.txtEditPassword.toString() == binding.txtEditRetypePassword.toString())
+        if (obj.password == binding.txtEditRetypePassword.toString())
         {
             viewModel.update(obj.password, obj.username)
             Toast.makeText(v.context, "Your Password Has Been Updated", Toast.LENGTH_SHORT).show()

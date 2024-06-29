@@ -94,6 +94,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="44dp"
                 android:text="Back"
+                android:onClick="@{back_listener::onBackLoginClick}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtRetypePassword" />
 
@@ -104,6 +105,7 @@
                 android:layout_marginTop="44dp"
                 android:layout_marginEnd="16dp"
                 android:text="Create"
+                android:onClick="@{(view) -> createaccount_listener.onCreateAccountClick(view,user)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtRetypePassword" />
 
@@ -117,6 +119,7 @@
                 android:ems="10"
                 android:hint="Username"
                 android:inputType="text"
+                android:text="@={user.username}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
