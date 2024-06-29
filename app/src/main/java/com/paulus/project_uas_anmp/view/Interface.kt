@@ -1,6 +1,7 @@
 package com.paulus.project_uas_anmp.view
 
 import android.view.View
+import com.paulus.project_uas_anmp.model.News
 import com.paulus.project_uas_anmp.model.User
 
 interface NewsDetailClick {
@@ -52,6 +53,10 @@ interface BackNewsListClick {
 }
 
 interface CreatedNewsClick {
-    fun onCreatedNewsClick(v: View)
+    fun onCreatedNewsClick(v: View, obj: News)
+}
+
+interface CancelCreateClick {
+    fun onCancelCreateClick(v: View)
 }
 

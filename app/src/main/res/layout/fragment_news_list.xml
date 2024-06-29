@@ -82,6 +82,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:tag="@{user.username}"
                     android:id="@+id/fobAddNews"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

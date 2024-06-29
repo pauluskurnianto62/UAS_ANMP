@@ -36,6 +36,9 @@
         <argument
             android:name="username"
             app:argType="string" />
+        <action
+            android:id="@+id/actionNewsListCreateNewsFragment"
+            app:destination="@id/createNewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsDetailFragment"
@@ -56,6 +59,13 @@
             app:destination="@id/loginFragment" />
         <argument
             android:name="username"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/createNewsFragment"
+        android:name="com.paulus.project_uas_anmp.view.CreateNewsFragment"
+        android:label="CreateNewsFragment" >
+        <argument android:name="username"
             app:argType="string" />
     </fragment>
 </navigation>
