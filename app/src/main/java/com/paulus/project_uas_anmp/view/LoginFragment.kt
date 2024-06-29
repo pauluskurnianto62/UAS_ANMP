@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.paulus.project_uas_anmp.R
 import com.paulus.project_uas_anmp.databinding.FragmentLoginBinding
@@ -24,8 +25,16 @@ class LoginFragment : Fragment(), RegistClick, LoginClick {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel =
+            ViewModelProvider(this).get(UserViewModel::class.java)
+        binding.loginListener = this
+        binding.registListener = this
+    }
+
     override fun onLoginClick(v: View, obj: User) {
-        if (obj.password == "" || obj.username == "")
+        if (obj.password != "" || obj.username != "")
         {
             viewModel.login(obj.username, obj.password)
             Toast.makeText(v.context, "Welcome", Toast.LENGTH_LONG).show()

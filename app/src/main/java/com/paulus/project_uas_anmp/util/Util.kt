@@ -13,8 +13,7 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
     }
 }
 
-val DB_USER_NAME = "userdb"
-val DB_NEWS_NAME = "newsdb"
+val DB_NAME = "newsdb"
 
 
 fun buildUserDb(context: Context): UserDatabase {
