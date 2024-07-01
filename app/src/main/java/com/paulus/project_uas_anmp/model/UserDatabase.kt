@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.paulus.project_uas_anmp.util.DB_NAME
+import com.paulus.project_uas_anmp.util.DB_NAME2
 import com.paulus.project_uas_anmp.util.MIGRATION_1_2
 
 @Database(entities = arrayOf(User::class), version = 1)
@@ -17,7 +17,7 @@ abstract class UserDatabase: RoomDatabase() {
 
         fun buildDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
-            UserDatabase::class.java, DB_NAME)
+            UserDatabase::class.java, DB_NAME2)
             .build()
 
         operator fun invoke(context: Context) {

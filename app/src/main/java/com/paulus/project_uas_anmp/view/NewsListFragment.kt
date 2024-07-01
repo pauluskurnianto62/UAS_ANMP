@@ -73,7 +73,7 @@ class NewsListFragment : Fragment(), ProfileClick, CreateNewsClick {
     }
 
     override fun onCreateNewsClick(v: View) {
-        val action = NewsListFragmentDirections.actionNewsListProfileFragment(v.tag.toString())
+        val action = NewsListFragmentDirections.actionNewsListCreateNewsFragment()
         Navigation.findNavController(v).navigate(action)
     }
 }

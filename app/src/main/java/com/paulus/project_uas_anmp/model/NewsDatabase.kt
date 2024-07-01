@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.paulus.project_uas_anmp.util.DB_NAME
 import com.paulus.project_uas_anmp.util.MIGRATION_1_2
 
-@Database(entities = arrayOf(News::class), version = 1)
+@Database(entities = arrayOf(News::class), version = 2)
 abstract class NewsDatabase: RoomDatabase() {
     abstract fun newsDao(): NewsDao
 
@@ -17,8 +17,8 @@ abstract class NewsDatabase: RoomDatabase() {
 
         fun buildDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
-            NewsDatabase::class.java, DB_NAME
-        )
+            NewsDatabase::class.java, DB_NAME)
+            .addMigrations(MIGRATION_1_2)
             .build()
 
         operator fun invoke(context: Context) {

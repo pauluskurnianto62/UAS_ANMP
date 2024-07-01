@@ -17,10 +17,9 @@ import com.paulus.project_uas_anmp.viewmodel.NewsDetailViewModel
 import com.paulus.project_uas_anmp.viewmodel.NewsListViewModel
 import com.paulus.project_uas_anmp.viewmodel.UserViewModel
 
-class CreateNewsFragment : Fragment(), CreatedNewsClick, CancelCreateClick {
+class CreateNewsFragment : Fragment(), CancelCreateClick {
     private lateinit var binding: FragmentCreateNewsBinding
     private lateinit var viewModel: NewsDetailViewModel
-    private lateinit var userViewModel: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,23 +33,25 @@ class CreateNewsFragment : Fragment(), CreatedNewsClick, CancelCreateClick {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(NewsDetailViewModel::class.java)
         binding.cancelListener = this
-        binding.createdListener= this
-        observeViewModel()
-    }
+        binding.btnSubmit.setOnClickListener {
+            if (binding.txtNewTitle.text.toString() != ""
+                && binding.txtNewAuthor.text.toString() != ""
+                && binding.txtNewShortDesc.text.toString() != ""
+                && binding.txtNewArticle.text.toString() != ""
+                && binding.txtNewImage.text.toString() != "")
+            {
+                val news = News(binding.txtNewTitle.text.toString(), binding.txtNewAuthor.text.toString(), binding.txtNewShortDesc.text.toString(), binding.txtNewImage.text.toString(), binding.txtNewArticle.text.toString())
+                val list = listOf(news)
+                viewModel.addNews(list)
+                Toast.makeText(it.context, "Data added", Toast.LENGTH_LONG).show()
+                Navigation.findNavController(it).popBackStack()
 
-    fun observeViewModel() {
-        userViewModel.userLD.observe(viewLifecycleOwner, Observer {
-            binding.user = it
-            binding.txtNewAuthor.setText(it.username)
-        })
-    }
-
-    override fun onCreatedNewsClick(v: View, obj: News) {
-        val news = News(obj.title, obj.author, obj.short_desc, obj.article, obj.image)
-        val list = listOf(news)
-        viewModel.addNews(list)
-        Toast.makeText(v.context, "Data added", Toast.LENGTH_LONG).show()
-        Navigation.findNavController(v).popBackStack()
+            }
+            else
+            {
+                Toast.makeText(it.context, "You should fill in all the fields", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onCancelCreateClick(v: View) {

@@ -9,11 +9,12 @@ import com.paulus.project_uas_anmp.model.UserDatabase
 val MIGRATION_1_2 = object : Migration(1, 2) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL(
-            "")
+            "ALTER TABLE news RENAME COLUMN image TO picture")
     }
 }
 
-val DB_NAME = "newsdb"
+val DB_NAME = "newsesdb"
+val DB_NAME2 = "userdb"
 
 
 fun buildUserDb(context: Context): UserDatabase {

@@ -12,8 +12,10 @@ data class News(
     var author:String,
     @ColumnInfo(name="short_desc")
     var short_desc:String,
-    @ColumnInfo(name="image")
-    var image:String,
+    //@ColumnInfo(name="image")
+    //var image:String,
+    @ColumnInfo(name="picture")
+    var picture:String,
     @ColumnInfo(name="article")
     var article:String
 ) {

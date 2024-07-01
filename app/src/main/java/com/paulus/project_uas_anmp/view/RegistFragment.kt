@@ -15,7 +15,7 @@ import com.paulus.project_uas_anmp.databinding.FragmentRegistBinding
 import com.paulus.project_uas_anmp.model.User
 import com.paulus.project_uas_anmp.viewmodel.UserViewModel
 
-class RegistFragment : Fragment(), CreateAccountClick, BackLoginClick {
+class RegistFragment : Fragment(), BackLoginClick {
     private lateinit var viewModel: UserViewModel
     private lateinit var binding: FragmentRegistBinding
     override fun onCreateView(
@@ -31,25 +31,26 @@ class RegistFragment : Fragment(), CreateAccountClick, BackLoginClick {
         viewModel =
             ViewModelProvider(this).get(UserViewModel::class.java)
         binding.backListener = this
-        binding.createaccountListener = this
+        binding.btnCreateAccount.setOnClickListener {
+            if (binding.txtNewUsername.text.toString() != ""
+                && binding.txtEmail.text.toString() != ""
+                && binding.txtNewPassword.text.toString() != ""
+                )
+            {
+                val user = User(binding.txtNewUsername.text.toString(), binding.txtEmail.text.toString(), binding.txtNewPassword.text.toString())
+                val list = listOf(user)
+                viewModel.addUser(list)
+                Toast.makeText(it.context, "Data added", Toast.LENGTH_LONG).show()
+                Navigation.findNavController(it).popBackStack()
+            }
+            else
+            {
+                Toast.makeText(it.context, "You should fill in all the fields", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onBackLoginClick(v: View) {
         Navigation.findNavController(v).popBackStack()
-    }
-
-    override fun onCreateAccountClick(v: View, obj: User) {
-        if (obj.password == binding.txtRetypePassword.toString())
-        {
-            val user = User(obj.username, obj.email, obj.password)
-            val list = listOf(user)
-            viewModel.addUser(list)
-            Toast.makeText(v.context, "Data added", Toast.LENGTH_LONG).show()
-            Navigation.findNavController(v).popBackStack()
-        }
-        else
-        {
-            Toast.makeText(v.context, "Oops, your retype password is not same as your password, please try again", Toast.LENGTH_SHORT).show()
-        }
     }
 }

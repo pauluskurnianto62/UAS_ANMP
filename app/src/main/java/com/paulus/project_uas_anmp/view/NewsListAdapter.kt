@@ -26,6 +26,11 @@ class NewsListAdapter(val newsList:ArrayList<News>, val adapterOnClick : (News) 
         holder.binding.btnDelete.setOnClickListener {
                 adapterOnClick(newsList[position])
         }
+        holder.binding.btnRead.setOnClickListener {
+            val action =
+                NewsListFragmentDirections.actionNewsListNewsDetailFragment(newsList[position].uuid)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     fun updateNewsList(newNewsList: List<News>) {
@@ -35,7 +40,9 @@ class NewsListAdapter(val newsList:ArrayList<News>, val adapterOnClick : (News) 
     }
 
     override fun onNewsDetailClick(v: View) {
-        val action = NewsListFragmentDirections.actionNewsListNewsDetailFragment(v.tag.toString().toInt())
+        val uuid = v.tag.toString().toInt()
+        val action = NewsListFragmentDirections.actionNewsListNewsDetailFragment(uuid)
+
         Navigation.findNavController(v).navigate(action)
     }
 }

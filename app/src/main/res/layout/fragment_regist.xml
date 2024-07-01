@@ -5,12 +5,6 @@
 
     <data>
         <variable
-            name="user"
-            type="com.paulus.project_uas_anmp.model.User" />
-        <variable
-            name="createaccount_listener"
-            type="com.paulus.project_uas_anmp.view.CreateAccountClick" />
-        <variable
             name="back_listener"
             type="com.paulus.project_uas_anmp.view.BackLoginClick" />
     </data>
@@ -23,13 +17,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="205dp" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -53,7 +40,6 @@
                 android:layout_marginEnd="24dp"
                 android:ems="10"
                 android:hint="E-mail"
-                android:text="@={user.email}"
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -67,47 +53,32 @@
                 android:layout_marginTop="40dp"
                 android:ems="10"
                 android:hint="Password"
-                android:text="@={user.password}"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
-            <EditText
-                android:id="@+id/txtRetypePassword"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginTop="36dp"
-                android:ems="10"
-                android:hint="Retype Password"
-                android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtNewPassword" />
-
             <Button
                 android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="44dp"
-                android:text="Back"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="64dp"
                 android:onClick="@{back_listener::onBackLoginClick}"
+                android:text="Back"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtRetypePassword" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNewPassword" />
 
             <Button
                 android:id="@+id/btnCreateAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="64dp"
                 android:layout_marginEnd="16dp"
                 android:text="Create"
-                android:onClick="@{(view) -> createaccount_listener.onCreateAccountClick(view,user)}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtRetypePassword" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNewPassword" />
 
             <EditText
                 android:id="@+id/txtNewUsername"
@@ -119,7 +90,6 @@
                 android:ems="10"
                 android:hint="Username"
                 android:inputType="text"
-                android:text="@={user.username}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
